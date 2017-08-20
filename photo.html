@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>时光廊</title>
+    <link href="photoCss.css" rel="stylesheet">
+
+    <script type="text/javascript" src="move2.js" charset="gbk"></script>
+
+    <script>
+        function getByClass(oParent, sClassName)
+        {
+            var aElm=oParent.getElementsByTagName('*');
+            var aArr=[];
+            for(var i=0; i<aElm.length; i++)
+            {
+                if(aElm[i].className==sClassName)
+                {
+                    aArr.push(aElm[i]);
+                }
+            }
+            return aArr;
+        }
+
+
+        window.onload=function(){
+            var oDiv=document.getElementById("wrap");
+            var oLeftbar=document.getElementById("leftbar");
+            var oContent=document.getElementById("content");
+            var aA=oLeftbar.getElementsByTagName("a");
+            var aDiv=getByClass(oContent,"content1");
+            var aSpan=document.getElementById("nav").getElementsByTagName("span");
+
+            var aImg=oContent.getElementsByTagName("img");
+            var iMinZindex=3;
+            var i=0;
+
+
+//            点击切换效果
+            aDiv[0].style.display='block';
+
+            for(i=1;i<aA.length-2;i++) {
+                aA[i].index = i-1;
+                aA[i].onclick = function () {
+                    for (i = 1; i < aA.length-2; i++) {
+                        aSpan[i-1].className = " ";
+                        aDiv[i-1].style.display = "none";
+                    }
+                    aSpan[this.index].className = 'spanclass';
+                    aDiv[this.index].style.display = "block";
+                }
+            }
+
+            aSpan[0].className="spanclass";
+            for(i=0;i<aSpan.length;i++){
+                aSpan[i].index=i;
+                aSpan[i].onclick=function(){
+                    for(i=0;i<aSpan.length;i++)
+                    {
+                        aSpan[i].className=" ";
+                        aDiv[i].style.display="none";
+                    }
+                    this.className="spanclass";
+                    aDiv[this.index].style.display="block";
+                }
+            }
+
+//          鼠标移入图片变幻效果
+
+//            布局转换
+            for(i=0;i<aImg.length;i++)
+            {
+                aImg[i].style.left=aImg[i].offsetLeft+"px";
+                aImg[i].style.top=aImg[i].offsetTop+"px";
+                if(i>=15&& i<30)
+                {
+                    aImg[i].style.left=aImg[i-15].offsetLeft+"px";
+                    aImg[i].style.top=aImg[i-15].offsetTop+"px";
+                }
+                if(i>=30 && i<45)
+                {
+                    aImg[i].style.left=aImg[i-30].offsetLeft+"px";
+                    aImg[i].style.top=aImg[i-30].offsetTop+"px";
+                }
+            }
+
+
+            for(i=0;i<aImg.length;i++)
+            {
+                aImg[i].style.position="absolute";
+                aImg[i].style.margin="0";
+            }
+
+//           加事件
+
+            for(i=0;i<aImg.length;i++)
+            {
+                aImg[i].onmouseover=function()
+                {
+                    this.style.zIndex=iMinZindex++;
+
+                    startMove(this,{width:330,height:270,marginLeft:-82,marginTop:-67});
+
+                }
+                aImg[i].onmouseout=function()
+                {
+
+                    startMove(this,{width:165,height:135,marginLeft:0,marginTop:0});
+                }
+
+
+            }
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <div id="leftbar">
+        <div class="logo"><img src="photoimages/logo.png"></div>
+     <ul>
+         <li><img src="photoimages/files.png"><a href="#">简单点</a></li>
+         <li><img src="photoimages/photo.png"><a href="#">寻找我</a></li>
+         <li><img src="photoimages/photo.png"><a href="#">花草风</a></li>
+         <li><img src="photoimages/photo.png"><a href="#">截图系</a></li>
+         <li><img src="photoimages/event.png"><a href="#">记忆章</a></li>
+         <li><img src="photoimages/share.png"><a href="#">分享乐</a></li>
+     </ul>
+
+        <div class="box1"><img src="photoimages/tiao.png"></div>
+        <div class="box2"><img src="photoimages/bottom.png"></div>
+        <!--leftbar is end-->
+    </div>
+
+    <div id="rightbar">
+
+        <div id="headline">
+            <img src="photoimages/search.png">
+           <div class="rightimg"> <img src="photoimages/message.png"><span>Like me!? message</span></div>
+        </div>
+
+        <div id="nav">
+           <div class="photoimg"> <img src="photoimages/name.png"></div>
+            <img src="photoimages/tubiao.png">
+         <div class="tiaoimg">
+             <span>寻找我</span>
+             <span>花草风</span>
+             <span>截图系</span>
+         </div>
+            <div class="uploadimg"><img src="photoimages/upload.png"></div>
+        </div>
+
+        <div id="content">
+
+            <div class="content1" >
+            <ul class="ul1">
+                <li><img src="photoimages/15..png"></li>
+                <li><img src="photoimages/14.png"></li>
+                <li><img src="photoimages/13.png"></li>
+                <li><img src="photoimages/12.png"></li>
+                <li><img src="photoimages/11.png"></li>
+            </ul>
+            <ul  class="ul2">
+                <li>纯真的年纪，那个爱笑的你。<br>2015.03.01</li>
+                <li>是否开怀，真真的眼眸。<br>2015.03.12</li>
+                <li>我的眼中，你的脚下。<br>2015.03.15</li>
+                <li>柔韧有力，新的视角。<br>2015.03.18</li>
+                <li>嬉笑怒骂，我们的那一天。<br>2015.03.21</li>
+            </ul>
+
+                <ul  class="ul1">
+                    <li><img src="photoimages/16.png"></li>
+                    <li><img src="photoimages/17.png"></li>
+                    <li><img src="photoimages/18.png"></li>
+                    <li><img src="photoimages/19.png"></li>
+                    <li><img src="photoimages/110.png"></li>
+                </ul>
+                <ul  class="ul2">
+                    <li>看着你，眼睛里有星星。<br>2015.03.23</li>
+                    <li>还记得泡沫里的阳光吗？<br>2015.03.25</li>
+                    <li>前行的路上，是否有花相迎？<br>2015.03.25</li>
+                    <li>自由的风，吹进我的心。<br>2015.03.28</li>
+                    <li>雪地滑行，潇洒有度。<br>2015.03.29</li>
+                </ul>
+
+                <ul  class="ul1">
+                    <li><img src="photoimages/111.png"></li>
+                    <li><img src="photoimages/112.png"></li>
+                    <li><img src="photoimages/113.png"></li>
+                    <li><img src="photoimages/114.png"></li>
+                    <li><img src="photoimages/115.png"></li>
+                </ul>
+                <ul class="ul2">
+                    <li>拥抱月亮，看不到的言笑晏晏。<br>2015.04.01</li>
+                    <li>相依相伴相携。<br>2015.04.12</li>
+                    <li>悄悄的看着远方。<br>2015.04.15</li>
+                    <li>黑夜的星空，与我的手指。<br>2015.04.18</li>
+                    <li>伸手，去追逐彩色的泡泡。<br>2015.04.21</li>
+                </ul>
+
+         </div>
+
+            <div class="content1" >
+                <ul class="ul1">
+                    <li><img src="photoimages/21.png"></li>
+                    <li><img src="photoimages/22.png"></li>
+                    <li><img src="photoimages/23.png"></li>
+                    <li><img src="photoimages/24.png"></li>
+                    <li><img src="photoimages/25.png"></li>
+                </ul>
+                <ul  class="ul2">
+                    <li>小珊瑚。<br>2015.04.04</li>
+                    <li>晶莹剔透的水珠。<br>2015.04.12</li>
+                    <li>艳艳的红色。<br>2015.03.15</li>
+                    <li>那片光，那条路。<br>2015.05.18</li>
+                    <li>波光粼粼，那是啥？<br>2015.06.21</li>
+                </ul>
+
+                <ul  class="ul1">
+                    <li><img src="photoimages/26.png"></li>
+                    <li><img src="photoimages/27.png"></li>
+                    <li><img src="photoimages/28.png"></li>
+                    <li><img src="photoimages/29.png"></li>
+                    <li><img src="photoimages/220.png"></li>
+                </ul>
+                <ul  class="ul2">
+                    <li>落叶最后的依恋。<br>2015.07.23</li>
+                    <li>模模糊糊的绿色？<br>2015.05.25</li>
+                    <li>你认识它吗？<br>2015.04.25</li>
+                    <li>红叶中的座椅。<br>2015.03.28</li>
+                    <li>半月与圆月。<br>2014.05.21</li>
+                </ul>
+
+                <ul  class="ul1">
+                    <li><img src="photoimages/221.png"></li>
+                    <li><img src="photoimages/222.png"></li>
+                    <li><img src="photoimages/223.png"></li>
+                    <li><img src="photoimages/224.png"></li>
+                    <li><img src="photoimages/225.png"></li>
+                </ul>
+                <ul class="ul2">
+                    <li>黄沙漫天，依旧挡不住的步伐。<br>2016.04.01</li>
+                    <li>那盏灯，那些光。<br>2015.08.12</li>
+                    <li>书中自有颜如玉。<br>2016.05.15</li>
+                    <li>生命的韧度。<br>2015.10.18</li>
+                    <li>彩色的石头。<br>2015.08.21</li>
+                </ul>
+
+            </div style style=>
+
+            <div class="content1" >
+                <ul class="ul1">
+                    <li><img src="photoimages/31.png"></li>
+                    <li><img src="photoimages/32.png"></li>
+                    <li><img src="photoimages/34.png"></li>
+                    <li><img src="photoimages/33.png"></li>
+                    <li><img src="photoimages/36.png"></li>
+                </ul>
+                <ul  class="ul2">
+                    <li>汪国真语录。<br>2016.04.04</li>
+                    <li>人生若只如初见。<br>2014.06.12</li>
+                    <li>有女名黛玉，黛玉。<br>2013.03.15</li>
+                    <li>蝶恋花。<br>2015.06.18</li>
+                    <li>葬花吟。<br>2015.10.21</li>
+                </ul>
+
+                <ul  class="ul1">
+                    <li><img src="photoimages/35.png"></li>
+                    <li><img src="photoimages/37.png"></li>
+                    <li><img src="photoimages/38.png"></li>
+                    <li><img src="photoimages/39.png"></li>
+                    <li><img src="photoimages/330.png"></li>
+                </ul>
+                <ul  class="ul2">
+                    <li>黛玉的诗情画意。<br>2015.07.23</li>
+                    <li>画面有什么感觉？<br>2015.08.05</li>
+                    <li>是程序员吗？<br>2015.07.25</li>
+                    <li>数据库MySQL。<br>2015.11.28</li>
+                    <li>这只小企鹅，是你知道的吗？<br>2016.07.16</li>
+                </ul>
+
+                <ul  class="ul1">
+                    <li><img src="photoimages/332.png"></li>
+                    <li><img src="photoimages/331.png"></li>
+                    <li><img src="photoimages/333.png"></li>
+                    <li><img src="photoimages/334.png"></li>
+                    <li><img src="photoimages/335.png"></li>
+                </ul>
+                <ul class="ul2">
+                    <li>中国，一点都不能少。<br>2016.07.16</li>
+                    <li>这就是未来的生活。<br>2016.01.11</li>
+                    <li>今日歌单。<br>2016.06.29</li>
+                    <li>歌词节选。<br>2015.11.08</li>
+                    <li>我的部分桌面。<br>2015.08.21</li>
+                </ul>
+
+            </div>
+
+            </div>
+
+        </div>
+        <!--rightbar is end-->
+
+        <div id="footer">
+            <ul>
+                <li><a href="index.html">主页君</a></li>
+                <li><a href="share.html">趣点屋</a></li>
+                <li><a href="about.html">绣我秀</a></li>
+            </ul>
+        </div>
+
+
+    <!--wrap is end-->
+</div>
+
+</body>
+</html>

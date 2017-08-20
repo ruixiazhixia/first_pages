@@ -1,0 +1,118 @@
+/* 
+* @Author: anchen
+* @Date:   2016-05-30 14:27:30
+* @Last Modified by:   anchen
+* @Last Modified time: 2016-06-03 01:09:07
+*/
+* {margin:0; padding:0;}
+li{list-style-type: none;}
+a{text-decoration: none;color:#60493e;}
+img{border: none;}
+body{font:15px/190% "微软雅黑",'Times New Roman',sans-serif; color:#60493e;background:url(indexImages/15.gif);}
+h1,h2{text-shadow: 0 3px 0px #aeaeae;}
+
+#overlay-bg{
+        background:url(indexImages/bottom.png) no-repeat  bottom right;width:100%;height:777px;}
+#pagewrap{
+    display:block;
+    width:1104px;
+    max-width:98%;
+    min-height: 100%;
+    position: relative;
+    margin:0 auto;
+}
+#header{
+    position:fixed;
+    z-index: 20;
+    width:180px;
+    padding-top:100px;
+    text-align: right;
+}
+#hgroup{  background:url(indexImages/head.png)repeat-y 59% ;}
+#header #hgroup #site-logo{
+    width:180px;
+    font: normal 36px/110%  Georgia,serif;
+    margin:0 0 10px;
+    cursor:pointer;
+}
+#header #hgroup #site-description{
+    font:12px/150% baskerville,"微软雅黑",Arial,sans-serif;
+    color:#886c4d;
+    padding:0 0 10px 2px;
+    text-shadow: none;
+    margin-top:15px;
+    border-bottom: 1px dashed #aeaeae;
+    cursor:pointer;
+
+}
+
+#header #nav{
+     display:block;
+     padding:10px 0 20px;
+    border-bottom: 1px dashed #aeaeae;
+}
+#header ul{display:block;position:relative;}
+#header ul li {
+    width:180px;
+    margin:12px 0 0;
+    position:relative;
+    height: 50px;
+
+}
+#header ul li a{ font:14px  baskerville, "微软雅黑" Arial,sans-serif;color:#8f0120;display:block;border-radius: 5em;padding:5px 5px 5px 0px ;}
+#header ul li:hover>a{color:#000;background:#fcf9ee;}
+#header ul li span{font:12px "Times New Roman " ,Georgia,Arial,serif;}
+#header ul li {}
+
+ form.search{
+  width:150px;/*宽到足以容纳扩展后的搜索框*/
+
+ }
+ .search input{
+  float:right; width:70px;
+  border-radius: 10px 0 10px 0;
+  font:1em  "Source Sans Pro",helvetica,Georgia,sans-serif;
+  color:#888;
+  outline:none;
+  -webkit-transition:2s width;
+  margin:13px  0;
+
+ }
+ .search input:focus{width:140px;} /*获得焦点时扩展到的宽度*/
+ .search label{display:none;}
+ form.search input{background:#fff;}
+ form.search input::-webkit-placeholder{color:#ccc;}
+ #header img{position:absolute;width:22px;height:22px;bottom:13px;left:158px;}
+
+#body  {padding-left:225px; padding-top:100px;}
+#body #contentwrap{margin-right:-268px;margin-bottom:60px;float:left;width:100%;}
+#body #contentwrap #content{margin-right:268px;padding-right:7.4%; }
+#body .pagecontent{border-bottom: 1px #888 dashed;padding:10px 0 10px;}
+#body #contentwrap #content #article .pagecontent h2.header 
+{
+    font-size:18px;
+    margin:0 0 20px;
+    text-shadow: none;
+  }
+#body #contentwrap #content #article .pagecontent h2.header:hover>a{color:#000;background:#fff;border-radius: 10em;padding:5px 5px ;}
+#body #contentwrap #content #article .pagecontent p.description1
+{
+ font-size:90%;
+ line-height: 150%;
+ color:#962d3e;
+ margin:0 0 12px;
+}
+ #body .description1 span{font-size:16px; font-weight:bold;}
+ #body .pagecontent .post-content{color:#343642;}
+
+#pagefoot {padding:20px 0 0 240px;}
+#pagefoot a{ display:inline-block;margin:0  0  0 20px; color:#962d3e;width:24px;height:24px;background:#cccccc;text-align: center;border-radius:12px;}
+#pagefoot a:hover{background: #fff;}
+
+#body  #sidebar {position:fixed;bottom:0px;right:50px;}
+#body #sidebar img{filter: alpha(opacity:50);opacity:0.5;margin-left: 10px;}
+#footer {overflow: hidden; position:relative;clear:both;font-size:12px;line-height:16px;padding:0 0 20px 20px;}
+#footer #about ul {float:left; width:200px; }
+#footer #about p{float:left;width:320px;}
+#footer #about a{color:#962d3e;}
+#footer #about a:hover{color:#000;background:#fff;}

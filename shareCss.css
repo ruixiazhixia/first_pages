@@ -1,0 +1,61 @@
+*{padding: 0; margin:0;}
+li{list-style-type: none;}
+img{vertical-align:bottom; display:block;}
+body{font-family: 微软雅黑,"Georgia", "Time New Roman", sans-serif;font-size:16px;line-height:30px;color:#60493e;background:#fcf9ee;}
+h3,h4{font-weight:normal;margin:15px 0 8px; color:#5c832f;}
+a{text-decoration: none;color:#000;}
+a:hover{text-decoration: underline;color:#962d3e;cursor:pointer;}
+#top{ background:#fcf9ee;}
+#pagewrap {
+    width:1120px;
+    margin:0 auto;
+    position: relative;
+    background:#fcf9ee;
+}
+#pagewrap #header{
+    width:100%;
+    position: relative;
+    overflow: hidden;
+}
+#pagewrap #header .bg{background: url("shareimgaes/headbg.jpg");height:20px;}
+#pagewrap #header #ul1 {
+    background: #db7093;
+    height: 45px;
+    padding-left:200px ;
+}
+#pagewrap #header #ul1 li{
+    float:left;
+    display: inline-block;
+    padding:4px 8px;
+    text-align: center;
+    width:100px;
+    height:30px;
+}
+#pagewrap #header #ul1 li+li{border-left:1px solid #ccc;}
+
+#pagewrap #nav{
+    width:105px;
+    position: relative;
+    display: block;
+    text-align:left;
+    float:left;
+    clear:left;
+    border-right:1px dashed #5f676e;
+    padding:2px 0  0 3px ;
+}
+
+#pagewrap #nav #ul2 li .headtitle{text-indent: 10px;font-size:14px;}
+#pagewrap #nav #ul2 li .list{text-indent:20px;font-size:12px;line-height: 24px;}
+
+#pagewrap #maincontent{padding:5px 4px 1px 2px ;position: relative;margin-left:20px;width:970px;float: left;}
+#pagewrap #maincontent .article {display: none;}
+#pagewrap #maincontent  .article h3{text-align: center;}
+#pagewrap #maincontent .article img{float:right;margin:7px 0 0 7px ;border:2px solid #962d3e;}
+#pagewrap #maincontent .article p{font-size:13px;line-height: 30px;text-indent: 25px; margin:5px 0;}
+.article .centerline{position: relative;left:250px;width:400px;margin:8px 0 10px; border-bottom:1px dashed #db7093;}
+
+#footer ul{margin:20px 0;font-size:10px;clear:both;overflow: hidden;text-align: center;
+}
+#footer ul li{float:left;display:block;position:relative;left:900px;padding:0 10px;}
+#footer ul li+li{border-left:1px solid #8f0120;}
+#footer img{float: right;}

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绣我秀</title>
+    <link rel="stylesheet" href="aboutCss.css">
+    <script type="text/javascript" src="move.js"></script>
+     <script>
+    window.onload=function() {
+        var oContent2 = document.getElementById("content2");
+        var oDiv = document.getElementById("box1");
+        var oDiv1 = document.getElementById("box3");
+        var oUl1 = oContent2.getElementsByTagName("ul")[0];
+        var oUl3 = oContent2.getElementsByTagName("ul")[1];
+        var aLi1 = oUl1.getElementsByTagName("li");
+        var aLi3 = oUl3.getElementsByTagName("li");
+
+        var oUl = document.getElementById("ulimg");
+        var aLi = oUl.getElementsByTagName("li");
+        var oBtn1 = document.getElementById('but1');
+        var oBtn2 = document.getElementById('but2');
+
+
+        var oLeftBar=document.getElementById("leftbar");
+        var aImg=oLeftBar.getElementsByTagName("img");
+
+        var timer = null;
+        var timer1 = null;
+        var timer2 = null
+        var iSpeed = 7;
+        var iNow = 1;
+        var iNow2 = 1;
+        var bBtn = true;
+        var num = 3;
+        var i=0;
+
+
+        oUl1.innerHTML += oUl1.innerHTML;
+        oUl1.style.height = aLi1.length * aLi1[0].offsetHeight;
+
+        oUl3.innerHTML += oUl3.innerHTML;
+        oUl3.style.height = aLi3.length * aLi3[0].offsetHeight;
+
+        oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px';
+
+
+//        大图的渐变于滚动
+        oBtn1.onclick=function(){
+            if(bBtn){
+                clearInterval(timer2);
+                timer2 = setInterval(autoPlay,3000);
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].style.position = 'relative';
+                    aLi[i].style.filter = 'alpha(opacity=100)';
+                    aLi[i].style.opacity = 1;
+                }
+                oUl.style.left = -(iNow-1)*aLi[0].offsetWidth + 'px';
+                if(iNow==1){
+                    iNow = aLi.length;
+                    aLi[aLi.length-1].style.position = 'relative';
+                    aLi[aLi.length-1].style.left = -aLi.length * aLi[0].offsetWidth + 'px';
+                }
+                else{
+                    iNow--;
+                }
+                iNow2--;
+                toRun();
+                bBtn = false;
+            }
+        }
+
+        oBtn2.onclick=function(){
+            if(bBtn){
+                clearInterval(timer2);
+                timer2 = setInterval(autoPlay,3000);
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].style.position = 'relative';
+                    aLi[i].style.filter = 'alpha(opacity=100)';
+                    aLi[i].style.opacity = 1;
+                }
+                oUl.style.left = -(iNow-1)*aLi[0].offsetWidth + 'px';
+                if(iNow==aLi.length){
+                    iNow = 1;
+                    aLi[0].style.position = 'relative';
+                    aLi[0].style.left = aLi.length * aLi[0].offsetWidth + 'px';
+                }
+                else{
+                    iNow++;
+                }
+                iNow2++;
+                toRun();
+                bBtn = false;
+            }
+        }
+
+        function toRun(){
+
+            startMove(oUl,{left:-(iNow2-1)*aLi[0].offsetWidth},function(){
+                if(iNow==1){
+                    aLi[0].style.position = 'relative';
+                    aLi[0].style.left = 0;
+                    oUl.style.left = 0;
+                    iNow2 = 1;
+                }
+                else if(iNow==aLi.length){
+                    aLi[aLi.length-1].style.position = 'relative';
+                    aLi[aLi.length-1].style.left = 0;
+                    oUl.style.left = -(aLi.length-1)*aLi[0].offsetWidth + 'px';
+                    iNow2 = aLi.length;
+                }
+
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].style.position = 'absolute';
+                    aLi[i].style.filter = 'alpha(opacity=0)';
+                    aLi[i].style.opacity = 0;
+                }
+                oUl.style.left = 0;
+                aLi[iNow2-1].style.zIndex = num++;
+                aLi[iNow2-1].style.filter = 'alpha(opacity=100)';
+                aLi[iNow2-1].style.opacity = 1;
+
+                bBtn = true;
+
+
+            });
+        }
+
+        timer2=setInterval(autoPlay,3000);
+
+        function autoPlay(){
+            if(iNow==aLi.length){
+                iNow = 1;
+                iNow2 = 1;
+            }
+            else{
+                iNow++;
+                iNow2++;
+            }
+            toRun();
+
+        }
+
+//        travel图的无缝滚动
+        function fnMove() {
+            if (oUl1.offsetTop < -oUl1.offsetHeight / 2) {
+                oUl1.style.top = 0;
+            }
+            else if (oUl1.offsetTop > 0) {
+                oUl1.style.top = -oUl1.offsetHeight / 2 + 'px';
+            }
+            oUl1.style.top = oUl1.offsetTop + iSpeed + 'px';
+        }
+
+        timer = setInterval(fnMove, 100);
+
+        oDiv.onmouseover = function () {
+            clearInterval(timer);
+        };
+
+        oDiv.onmouseout = function () {
+            timer = setInterval(fnMove, 100);
+        };
+
+//        文字无缝滚动
+        function fnMoveTwo() {
+
+            if (oUl3.offsetTop < -oUl3.offsetHeight / 2) {
+                oUl3.style.top = 0;
+            }
+            else if (oUl3.offsetTop > 0) {
+                oUl3.style.top = -oUl3.offsetHeight / 2 + 'px';
+            }
+            oUl3.style.top = oUl3.offsetTop + iSpeed + 'px';
+        }
+
+        timer1 = setInterval(fnMoveTwo, 200);
+
+        oDiv1.onmouseover = function () {
+            clearInterval(timer1);
+        };
+
+        oDiv1.onmouseout = function () {
+            timer1 = setInterval(fnMoveTwo, 200);
+        };
+
+//        read more 连接
+
+        aImg[2].onclick=function(){
+            window.location.href="http://baike.baidu.com/link?url=wDxj0HSzCA67-xkvzLQIKt-dm3jJznNlmGsZtSXxgV3-NAww-VZ2ATtJkYqGf_CYAzvdDSVsYTdU_PANb9UQFq";
+        }
+
+        aImg[5].onclick=function(){
+            window.location.href="http://baike.baidu.com/link?url=N_cDEmgYbLwgPKb6Rpwo8M5u9Ge02xhE7BTo6Pz5GoR8L3UmMlx_7jXV8KnOe-N4w3pMvIJtz1zNJd_WZ1TpqxQxJt2SDuqQDw8if2qHdVUTv-LLceZNRn1qd2yyMZ3aAnwKC-S17VBfeG64adHSr-AkhJwvUIjqeUCw92GsQUFqbzmD_AvHc4EwU64P-9xPNQ98obtLqKHdOcQ04xcIGq";
+        }
+
+        aImg[8].onclick=function(){
+            window.location.href="http://baike.baidu.com/link?url=X_WRvNl__n40Bmg0MBfR-RQAeAJiMAYRfTmdrRMssbfUXQfiwAUxWcRIDX8wYmDYL2m5JeHq-2hK2EgyUzxbAq";
+        }
+
+        aImg[11].onclick=function(){
+            window.location.href="http://baike.baidu.com/link?url=K_AsSmVJh6yYkl2gik45obhrDuZ0zBOv3yKhSa3w4ud4v3NkgzVjlLGaP646VmRq1G39IZ7dUF4jl7FNtoG-8b5aXruh2qN9gzpxF2f3EdW";
+        }
+
+
+    }
+
+     </script>
+</head>
+<body>
+<div id="wrap">
+    <div id="header">
+    <div class="list">
+       <ul>
+           <li><a href="about.html" >绣我秀</a></li>
+           <li><a href="index.html">主页君</a></li>
+           <li><a href="share.html">趣点屋</a></li>
+           <li><a href="photo.html">时光廊</a></li>
+       </ul>
+    </div>
+        <img src="aboutimages/head.png">
+</div>
+    <!--header is end-->
+
+    <div id="contenter">
+
+        <div id="content1">
+            <div class="ul">
+            <ul id="ulimg">
+                <li><img src="aboutimages/img4.jpg"></li>
+                <li><img src="aboutimages/img2.jpg"></li>
+                <li><img src="aboutimages/img3.jpg"></li>
+                <li><img src="aboutimages/img1.jpg"></li>
+                <li><img src="aboutimages/img5.jpg"></li>
+
+            </ul>
+                </div>
+         <div id="but1" class="but1">
+        <img src="aboutimages/prebut.png">
+        </div>
+        <div id="but2" class="but2">
+            <img src="aboutimages/nexbut.png">
+        </div>
+        </div>
+        <!--content1 is end-->
+        <div id="content2">
+
+            <div id="top">
+                <div class="box1">
+                    <ul id="box1">
+                        <li  style="z-index:2; filter:alpha(opacity=100); opacity:1;"><img src="aboutimages/qujiang.jpg"></li>
+                        <li><img src="aboutimages/chengqiang.png"></li>
+                        <li><img src="aboutimages/dayanta.png"></li>
+                        <li><img src="aboutimages/datang.png"></li>
+                    </ul>
+                </div>
+
+                <div class="box1">
+                    <video  poster="http://www.html5videoplayer.net/poster/toystory.jpg" width="250" height="205" controls>
+                        <source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4" /></video>
+                </div>
+
+                <div class="box1">
+                    <ul id="box3">
+                        <li><a href="https://www.douban.com/note/548599617/">1.读《梦里花落知多少》</a></li>
+                        <li> <a href="https://www.douban.com/note/548303539/">2. 我喜欢的《左右手》</a></li>
+                        <li><a href="https://www.douban.com/note/547539451/">3. 一首歌的改变</a></li>
+                        <li><a href="https://www.douban.com/note/539011118/">4. 观《唐人街探案》</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div id="leftbar">
+
+                <div id="left1" class="left">
+                    <div class="main">
+                        <div class="imgcontent">
+                            <img src="aboutimages/qujiang.jpg">
+                        </div>
+                        <img src="aboutimages/travel.png">
+                        <div class="section">
+                            <h1>曲江遗址公园</h1>
+                            <p>沿着唐城墙遗址走到东南角，就是曲江池遗址公园的西入口。举目远眺，能看到湖心仙岛，波光中依仙岛而设的荷廊恰似一朵盛开的水莲花。若是向更远处，能望到阅江酒楼在曲江池南岸的柳色掩映中，酒旗招展似乎要引得游人快步，而重重柳堤、香花和池水却致人流连漫步。性急的游客，这时候也可以直接驾车取曲江池西路直接绕到公园南口进酒楼，然而这未免饕餮了一路由北向南的盛景。</p>
+                               <p> 春可以看花，夏可观柳堤，秋夜赏明月，冬日品雪晴，何必心急，效法盛唐的名士仕女们，且慢慢行品味古今盛衰。忆昔开元盛世时，从城门鱼贯而出直奔曲江池畔的香车宝马川流不息，即使是感伤的诗人仍不得不赞叹这边的“夕阳无限好”。今日在唐城曲江看到的曲江遗址公园不负大唐气象，千亩园林和半园曲水张开怀抱诱人神游昔日的盛世，同时也使古都的公共空间在今日再现。</p>
+                            <img src="aboutimages/more.png">
+                        </div>
+                     </div>
+                 </div>
+
+                <div id="left2" class="left">
+                     <div class="main">
+                         <div class="imgcontent">
+                             <img src="aboutimages/chengqiang.png">
+                         </div>
+                         <img src="aboutimages/travel.png">
+                         <div class="section">
+                             <h1>西安城墙</h1>
+                             <p>西安城墙现有城门18座，从永宁门开始顺时针依次为：永宁门、朱雀门、勿幕门、含光门、安定门、玉祥门、尚武门、安远门、尚德门、解放门、尚俭门、尚勤门、朝阳门、中山门、长乐门、建国门、和平门、文昌门。这18座城门的形成时间和规格各不相同。</p>
+                                 <p>其中永宁门、安远门、长乐门、安定门四座城门，作为西安明城墙的原有城门因当时的军事防御需要，都是单门洞，且都修建了三道城墙，两道城墙之间又形成了瓮城。除永宁门外，其余三门现都只剩下两道城墙。到民国时期，城门逐渐失去了原有的军事防御需要，为了交通的方便，人们在原有的四座城门两边新劵了门洞。</p>
+                                 <p>其余十四座后来新开的城门，有的是在被战火打开的城墙豁口上重建的，有的是在唐皇城城门遗址旁新劵的，有的是为了纪念伟大人物新劵。</p>
+                             <img src="aboutimages/more.png">
+                         </div>
+                     </div>
+                 </div>
+
+                <div id="left3" class="left">
+                         <div class="main">
+                             <div class="imgcontent">
+                                 <img src="aboutimages/dayanta.png">
+                             </div>
+                             <img src="aboutimages/travel.png">
+                             <div class="section">
+                                 <h1>大雁塔音乐喷泉</h1>
+                                 <p>据资料介绍，喷泉水面面积达2万平方米；其八级迭水池中的八级变频方阵是世界最大的方阵。每级水池有7级迭水，与大雁塔7层相印合。这套喷泉共设计独立水型22种，其变频方阵（排山倒海水型）、莲花朵朵、百米变频跑泉、云海茫茫、海鸥展翅、蝶恋花、水</p>
+                                     <p>火雾以及60米高喷水柱等，都是我国最新推出的科技含量较高的新颖水型；60米宽、20余米高的大型激光水幕中4台喷泉从水里喷出，在6米高空充分燃烧低温爆开，更增加了整个喷泉的夺人气魄。音乐系统采用西安三信音响公司提供的高保真远射程专业音响系统，使喷泉声、光、水、色有机交融。</p>
+                                     <p>大雁塔北广场设计九级踏步，每个台阶五步，每级水池有7级叠水，与大雁塔7层相印合。由 北往南逐步拾阶而上。 北广场灯光采用高岗灯、平原灯，光谱分析人可见很亮，昆虫看不 见，整个广场不会有昆虫漫天飞的现象。</p>
+                                 <img src="aboutimages/more.png">
+                             </div>
+                         </div>
+                     </div>
+
+                <div id="left4" class="left">
+                    <div class="main">
+                        <div class="imgcontent">
+                            <img src="aboutimages/datang.png">
+                        </div>
+                        <img src="aboutimages/travel.png">
+                        <div class="section">
+                            <h1>大唐芙蓉园-玄宗插花赏苏颋</h1>
+                            <p>皇帝芙蓉园游宴时，赋诗成为时尚，每有好诗不仅可以得到皇上的嘉奖，同僚的羡慕，而且马上传遍长安朝野，变得妇孺皆知。《开元天宝遗事·天宝下》记载这样一些趣事：“长安春时，盛于游赏，园林树木无闲地。故学士苏颋《应制》云：飞埃结红雾，游盖飘青云。帝览之嘉赏焉，遂以御花亲插颋之巾上，时人荣之。”说苏颋随玄宗皇帝春游芙蓉园，在紫云楼观赏万民游曲江盛景，但见尘埃轻飘与烟水红花相映，结成红雾，游人幄帐成片，彩绸飘扬无边无际直接青云。于是，用诗表现了出来，深得上皇之心，得到了玄宗亲自插花的嘉赏。</p>
+                            <img src="aboutimages/more.png">
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+
+            <div id="rightbar">
+
+                <div id="right1" class="right">
+                <img src="aboutimages/share.png">
+                <div class="text">
+                    <img src="aboutimages/txt3.jpg">
+                    <h1>后期调色</h1>
+                    <p>图片是在一天的下午，接近7点拍摄的，透过窗口看到的景色，就命名为窗外一景。</p>
+                    <p>调色思路：</p>
+                    <p>原图分析：原片偏暗，曝光明显不足，所以首先要提高曝光度，提亮画面感，降低高度，保留高光细节，增加对比度使画面更具层次感，减少白色增加黑色，突显细节，稍微加一点饱和度。接下来进行曲线调整，分离色调，降低暗色调和阴影暗部不那么发挥，减少杂色使画面更干净。</p>
+                </div>
+            </div>
+
+                <div id="right2" class="right">
+                    <img src="aboutimages/share.png">
+                    <div class="text">
+                        <img src="aboutimages/txt4.jpg">
+                        <h1>  Dan Rather's Speech at the University of Texas</h1>
+                        <p>From that moment on the university became a symbol for me of the wisdom of Texas and a physical symbol of how much there was to learn.</p>
+                            <p>I have savored that the first glimpse of the university for a lifetime,as I share savor this moment.I hope that you are savoring your moment tonight too.I expect you've had a busy weekend,attending parties,packing your things saying your good-byes.But I hope you have pulled off to the side of whatever road you're on and take a  moment to look back at the tower,and the university,and your friends and teachers.These things you need to absorb deep within you.</p>
+                            <p>The chances are,these are the things you'll remember longest from this weekend.What I see or do here won't matter much,nor should it.I can honestly tell you I do not remember who spoke or what about;I don't remember one word of the commencement address at my graduation from Sam Houston State Teachers College.I don't remember anything except the smiles of pride on the faces of my mother and father.Parents are always the unsung heroes at any graduation. </p>
+                    </div>
+                </div>
+
+                <div id="right3" class="right">
+                    <img src="aboutimages/share.png">
+                    <div class="text">
+                        <img src="aboutimages/txt1.png">
+                        <h1>书摘燕子</h1>
+                        <p>1.从前，害怕离别，因为割舍不下。如今，我们许诺成为更好的自己，远行则有了意义。</p>
+                        <p>2.没有什么路是白走的，没有什么事情是白做的，这些看似无意义的事情，都是成长的基石。在我们的生命中的每个插曲都有着自己该有的意义，所以不要抱怨为什么不早点做，更不要后悔要是做了什么就好了。你有后悔、抱怨的时间，不如整装待发前进起来。有时候只有走错了路，才逐渐明白自己要走的未来；只有交错了朋友，才逐渐知道什么是患难见真情；只有爱错过人，才逐渐懂得真爱是什么。</p>
+                          <p>3.我不去想是否能成功,既然选择了远方,
+                          便只顾风雨兼尘。 </p>
+                    </div>
+                </div>
+
+
+                <div id="share">
+                    <img src="aboutimages/share.png">
+                <ul id="ul2">
+                   <li> <img src="aboutimages/wen1.png"> <a href="https://www.douban.com/note/548599617/">1.《梦里花落知多少》<img src="aboutimages/like.png"></a></li>
+                   <li> <img src="aboutimages/wen2.jpg"> <a href="https://www.douban.com/note/548303539/">2.我喜欢的《左右手》<img src="aboutimages/like.png"></a></li>
+                    <li><img src="aboutimages/wen3.png"> <a href="https://www.douban.com/note/547539451/">3.一首歌的改变<img src="aboutimages/like.png"></a></li>
+                    <li><img src="aboutimages/wen4.png"><a href="https://www.douban.com/note/539011118/">4.观《唐人街探案》<img src="aboutimages/like.png"></a></li>
+                </ul>
+                    <img src="aboutimages/search.png">
+                </div>
+
+            </div>
+
+    </div>
+        <!--content2 is end-->
+
+    </div>
+    <!--contenter is end-->
+
+    <div id="footer">
+     <div class="foottxt">
+         <div class="box">
+             <p>既然选择了远方，就只顾风雨兼程吧。</p>
+         </div>
+     </div>
+    </div>
+    <!--footer is end-->
+</div>
+<!--wrap is end-->
+
+
+</body>
+</html>

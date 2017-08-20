@@ -1,0 +1,59 @@
+*{padding:0;margin:0;}
+li{list-style-type: none;}
+a{text-decoration: none;color:#333344;}
+a:hover{text-decoration: underline;color:#22bb66;font-weight:600;}
+img{cursor:pointer;}
+body{ background: url("aboutimages/bg.png")repeat-y;font-family: 微软雅黑,"Georgia", "Time New Roman", sans-serif; line-height:30px;font-size:14px;}
+
+#wrap{width:100%; height:3524px;}
+#wrap #header{position: relative;height:300px;}
+#wrap #header .list{width:1349px;height:44px;background:#fff;border-bottom: 1px solid #dde0ea;box-shadow: 2px 2px 3px #aeaeae;}
+#wrap #header ul{position: relative;left:510px;margin:20px 0 0;}
+#wrap #header ul li{display:block;margin-right:20px;font-size:14px; float: left;border: 1px solid #dde0ea;border-radius: 5px;padding:0 5px;box-shadow:0 12px 8px -9px #fa0c28;}
+#wrap #header ul>li:first-child{background: #22bb66;}
+#wrap #header ul li a{color:#292929;}
+#wrap #header ul>li:first-child a:first-child{color:#ffffff;}
+#wrap #header ul li a:hover{color:darkgreen;font-weight: 700;}
+#wrap #header img{display: block;position: relative;left:510px;top:10px;}
+
+#contenter{position: relative;}
+#contenter #content1{width:100%;height:500px;background:#595959;}
+
+#contenter #content1 .ul{ position:relative;top:20px;left:0;margin:0 220px;height:456px; border:3px solid #6c6d68;box-shadow:0 12px 8px -9px #000000;border-radius: 5px;overflow: hidden;}
+#contenter #content1 .ul ul{ position:relative;left:0;}
+
+#contenter #content1  .ul ul li{position:relative;float:left;}
+#contenter #content1 .but1{position: absolute;left:90px;top:210px;}
+#contenter #content1 .but2{position: absolute;right:90px;top:210px;}
+
+#contenter #content2{width:880px;margin:80px auto 0;}
+
+#contenter #content2  .box1{width:250px;height:205px;position:relative;border:1px solid #dde0ea;border-radius:4px;float:left;padding:5px;background:#ffffff;box-shadow:0 12px 8px -9px #555;overflow: hidden; z-index: 20;}
+#contenter #content2  .box1 ul{position: relative;top:0;left:0;}
+#contenter #content2  .box1 img{width:250px;height:205px;}
+#contenter #content2   #top .box1+.box1{margin-left:44px;}
+#contenter #content2  .box1 #box3 li{height:40px;margin:5px 10px  5px 25px;}
+
+#contenter #content2 #leftbar{width:460px;float:left;margin:40px 0;}
+#contenter #content2 #leftbar .main{width:450px;border:1px solid #bcc0ce; box-shadow:0 12px 8px -9px #555;  overflow: hidden;margin-bottom: 50px;background: #fff;}
+#contenter #content2 #leftbar .main img{position: relative;left:120px;}
+#contenter #content2 #leftbar .imgcontent {width:100%;}
+#contenter #content2 #leftbar .imgcontent img{position: relative;left:0;}
+#contenter #content2 #leftbar .section {padding:10px 5px 0px;}
+#contenter #content2 #leftbar .section h1{text-align: center;font-size: 16px; margin:5px 0;}
+#contenter #content2 #leftbar .section p{text-indent: 22px;}
+#contenter #content2 #leftbar .section p:first-letter{font-size:150%;font-weight: 800;vertical-align:-05%;}
+#contenter #content2 #leftbar .section img{float:right;padding-right:120px;display:block;}
+
+#contenter #content2 #rightbar{width:350px;float:right;margin:40px 0;}
+#contenter #content2 #rightbar .right{background:#ffffff;padding:10px 2px 15px;margin-bottom:40px;box-shadow:0 12px 8px -9px #555;border:1px solid #bcc0ce;}
+#contenter #content2 #rightbar .right h1{text-align: center;font-size:16px; margin:5px 0;}
+#contenter #content2 #rightbar .right p{text-indent: 22px;word-spacing: 5px;text-align: justify;}
+#contenter #content2 #rightbar .right p:first-letter{font-size:150%;font-weight: 800;vertical-align:-05%;}
+#contenter #content2 #rightbar #share{padding:5px;background: #fff;box-shadow:0 12px 8px -9px #555;padding:10px 0 15px;border:1px solid #bcc0ce;}
+#contenter #content2 #rightbar #ul2 img{vertical-align: middle;padding:10px;}
+#contenter #content2 #rightbar #ul2 li a{position: relative;}
+#contenter #content2 #rightbar #ul2 li a img{position: absolute;top:6px;left:-8px;}
+#wrap #footer{width:100%;height:300px;background:#666666;clear: both;position: relative;}
+#wrap #footer .foottxt{width:300px;height:80px;border:10px solid #ffffff;position: absolute;top:100px;left:520px;}
+#wrap #footer .foottxt .box{width:245px;height:30px;background:#22bb66;margin:15px;padding:10px;color:#ffffff;}
